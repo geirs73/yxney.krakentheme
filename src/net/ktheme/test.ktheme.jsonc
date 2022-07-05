@@ -1,0 +1,23 @@
+{
+    "meta": {
+      "name": "Dark mono graph with yellow",
+      "scheme": "dark" // must be "light" or "dark"
+    },
+    "themeValues": {
+      // values applied to the entire app
+      "root": {
+        // graph colors
+        "graph-color-0": "#fcba03",
+        "graph-color-1": "#8c8c8c",
+        "graph-color-2": "#8c8c8c",
+        "graph-color-3": "#8c8c8c",
+        "graph-color-4": "#8c8c8c",
+        "graph-color-5": "#8c8c8c",
+        "graph-color-6": "#8c8c8c",
+        "graph-color-7": "#8c8c8c",
+        "graph-color-8": "#8c8c8c",
+        "graph-color-9": "#8c8c8c"
+      }
+    }
+  }
+  
