@@ -16,7 +16,7 @@ public class ThemeProcessor
         var inFile = config.File ?? throw new ArgumentException("File is null");
 
         var localAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-        var templateFile = File.ReadAllText(config.TemplateFile.FullName);
+        var templateFile = File.ReadAllText(config.TemplateFilePath);
         var transformFile = inFile.OpenText().ReadToEnd();
 
         var serOpts = new JsonSerializerOptions

@@ -11,7 +11,7 @@
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/src/net/ktheme/bin/Debug/net6.0/ktheme.dll",
-            "args": ["test.ktheme.jsonc"],
+            "args": ["test.ktheme.jsonc", "-t", "dark-high-contrast.jsonc-default"],
             "cwd": "${workspaceFolder}/src/net/ktheme",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",

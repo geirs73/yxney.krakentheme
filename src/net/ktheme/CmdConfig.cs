@@ -9,12 +9,28 @@ namespace KTheme;
 
 public class CmdThemeConfig
 {
-    public FileInfo TemplateFile { get; set; }
+    private string _krakenProfileDirectory;
+    public string TemplateFile { get; set; }
     public FileInfo? File { get; set; }
     public CmdThemeConfig()
     {
         var localAppDataPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-        TemplateFile = new FileInfo(@$"{localAppDataPath}\.gitkraken\themes\dark.jsonc-default");
+        _krakenProfileDirectory = Path.Combine(@$"{localAppDataPath}", ".gitkraken", "themes");
+        TemplateFile = "dark.jsonc-default";
+    }
+
+    public string TemplateFilePath => GetFullKrakenThemePath(TemplateFile);
+
+    private string GetFullKrakenThemePath(string profileFileName)
+    {
+        if (!System.IO.File.Exists(profileFileName))
+        {
+            var fullPath = Path.Combine(_krakenProfileDirectory, profileFileName);
+            if (!System.IO.File.Exists(fullPath))
+                throw new FileNotFoundException(fullPath);
+            return fullPath;
+        } else
+            return profileFileName;
     }
 }
 
@@ -24,6 +40,6 @@ public static class CmdLineSymbols
     public static List<Symbol> RootSymbols => new()
     {
         new Argument<FileInfo?>("file", "Config file for kraken theme" ),
-        new Option<FileInfo?>(new[]{"--template-file", "-t"}, "Template file for kraken theme (default dark.jsonc-default)" )
+        new Option<string?>(new[]{"--template-file", "-t"}, "Template file for kraken theme (default dark.jsonc-default)" ),
     };
 }
